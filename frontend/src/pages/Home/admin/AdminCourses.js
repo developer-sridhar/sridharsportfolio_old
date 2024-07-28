@@ -32,7 +32,7 @@ const AdminCourses = () => {
           _id: selectedItemForEdit._id,
         });
       } else {
-        response = await axios.post("/api/portfolio/add-course", values);
+        response = await axios.post("https://sridharsportfolio.onrender.com/api/portfolio/add-course", values);
       }
       dispatch(HideLoading());
       if (response.data.success) {
