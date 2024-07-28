@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const Course = () => {
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
   const { portfolioData } = useSelector((state) => state.root);
-  const { course } = portfolioData;
+  const { course } = portfolioData || { course: [] }; // Provide a default empty array
 
   return (
     <div>
