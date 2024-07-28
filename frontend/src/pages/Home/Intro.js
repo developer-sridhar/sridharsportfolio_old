@@ -3,8 +3,9 @@ import { useSelector } from "react-redux";
 
 const Intro = () => {
   const { portfolioData } = useSelector((state) => state.root);
-  const { intro } = portfolioData;
-  const { firstName, lastName, welcomeText, description, caption } = intro;
+  const { intro } = portfolioData || {}; // Provide a default empty object
+
+  const { firstName, lastName, welcomeText, description, caption } = intro || {}; // Provide a default empty object
 
   return (
     <div className="h-[80vh] bg-primary flex flex-col items-start justify-center gap-8">
