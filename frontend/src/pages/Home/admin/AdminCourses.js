@@ -27,7 +27,7 @@ const AdminCourses = () => {
       dispatch(ShowLoading());
       let response;
       if (selectedItemForEdit) {
-        response = await axios.post("/api/portfolio/update-course", {
+        response = await axios.post("https://sridharsportfolio.onrender.com//api/portfolio/update-course", {
           ...values,
           _id: selectedItemForEdit._id,
         });
@@ -53,7 +53,7 @@ const AdminCourses = () => {
   const onDelete = async (item) => {
     try {
       dispatch(ShowLoading());
-      const response = await axios.post("/api/portfolio/delete-course", {
+      const response = await axios.post("https://sridharsportfolio.onrender.com//api/portfolio/delete-course", {
         _id: item._id,
       });
       dispatch(HideLoading());
