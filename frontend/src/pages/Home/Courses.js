@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const Course = () => {
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
   const { portfolioData } = useSelector((state) => state.root);
-  const { course } = portfolioData || { course: [] }; // Provide a default empty array
+  const courses = portfolioData?.course || [];
 
   return (
     <div>
@@ -13,12 +13,10 @@ const Course = () => {
 
       <div className="flex py-10 gap-20 sm:flex-col">
         <div className="flex flex-col gap-10 border-l-2 border-[#135e4c82] w-1/3 sm:flex-row sm:overflow-x-scroll sm:w-full">
-          {course.map((course, index) => (
+          {courses.map((course, index) => (
             <div
-              
-              onClick={() => {
-                setSelectedItemIndex(index);
-              }}
+              key={index}
+              onClick={() => setSelectedItemIndex(index)}
               className="cursor-pointer"
             >
               <h1
@@ -34,21 +32,23 @@ const Course = () => {
           ))}
         </div>
 
-        <div className="flex items-center justify-center gap-10 sm:flex-col">          
-          <div className="flex flex-col gap-5">
-            <h1 className="text-secondary text-2xl font-semibold">
-              {course[selectedItemIndex].title}
-            </h1>
-            <p className="text-white">
-              {course[selectedItemIndex].description}
-            </p>
+        {courses.length > 0 && (
+          <div className="flex items-center justify-center gap-10 sm:flex-col">          
+            <div className="flex flex-col gap-5">
+              <h1 className="text-secondary text-2xl font-semibold">
+                {courses[selectedItemIndex].title}
+              </h1>
+              <p className="text-white">
+                {courses[selectedItemIndex].description}
+              </p>
+            </div>
+            <img
+              src={courses[selectedItemIndex].image}
+              alt={courses[selectedItemIndex].title}
+              className="h-52 w-80 "
+            />
           </div>
-          <img
-            src={course[selectedItemIndex].image}
-            alt={course[selectedItemIndex].title}
-            className="h-52 w-80 "
-          />
-        </div>
+        )}
       </div>
     </div>
   );
