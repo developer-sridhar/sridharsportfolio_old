@@ -75,10 +75,10 @@ const AdminProjects = () => {
   };
 
   return (
-    <div>
-      <div className="flex justify-end">
+    <div className="p-5">
+      <div className="flex justify-end mb-5">
         <button
-          className="bg-primary px-5 py-2 text-white"
+          className="bg-primary px-5 py-2 text-white rounded"
           onClick={() => {
             setSelectedItemForEdit(null);
             setShowAddEditModal(true);
@@ -87,7 +87,7 @@ const AdminProjects = () => {
           Add Project
         </button>
       </div>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {projects.map((project) => (
           <div
             key={project._id}
@@ -96,7 +96,7 @@ const AdminProjects = () => {
             <h1 className="text-xl text-primary font-bold">
               {project.title}
             </h1>
-            <img src={project.image} alt="" className="h-62 w-80"/>
+            <img src={project.image} alt="" className="h-62 w-full"/>
             <h1>Technologies: {project.technologies}</h1>
             <h1>Description: {project.description}</h1>
             <h1>Link: {project.link}</h1>
@@ -125,27 +125,24 @@ const AdminProjects = () => {
       >
         <Form form={form} layout="vertical" onFinish={onFinish}>
           <Form.Item name="title" label="Title">
-            <input placeholder="Title" />
+            <input placeholder="Title" className="w-full p-2 border rounded"/>
           </Form.Item>
           <Form.Item name="description" label="Description">
-            <input placeholder="Description" />
+            <input placeholder="Description" className="w-full p-2 border rounded"/>
           </Form.Item>
           <Form.Item name="image" label="Image URL">
-            <input placeholder="Image URL" />
+            <input placeholder="Image URL" className="w-full p-2 border rounded"/>
           </Form.Item>
-          <Form.Item name="link" label="link">
-            <input placeholder="Paste URL Link"/>
+          <Form.Item name="link" label="Link">
+            <input placeholder="Paste URL Link" className="w-full p-2 border rounded"/>
           </Form.Item>
           <Form.Item name="technologies" label="Technologies">
-            <input placeholder="Technologies"/>
+            <input placeholder="Technologies" className="w-full p-2 border rounded"/>
           </Form.Item>
-
-          <div className="flex justify-end">
+          <div className="flex justify-end gap-3">
             <button
               className="border-primary text-primary px-5 py-2 rounded-md"
-              onClick={() => {
-                setShowAddEditModal(false);
-              }}
+              onClick={() => setShowAddEditModal(false)}
             >
               Cancel
             </button>
