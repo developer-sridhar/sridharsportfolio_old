@@ -27,7 +27,7 @@ const AdminCourses = () => {
       dispatch(ShowLoading());
       let response;
       if (selectedItemForEdit) {
-        response = await axios.post("https://sridharsportfolio.onrender.com//api/portfolio/update-course", {
+        response = await axios.post("https://sridharsportfolio.onrender.com/api/portfolio/update-course", {
           ...values,
           _id: selectedItemForEdit._id,
         });
@@ -53,7 +53,7 @@ const AdminCourses = () => {
   const onDelete = async (item) => {
     try {
       dispatch(ShowLoading());
-      const response = await axios.post("https://sridharsportfolio.onrender.com//api/portfolio/delete-course", {
+      const response = await axios.post("https://sridharsportfolio.onrender.com/api/portfolio/delete-course", {
         _id: item._id,
       });
       dispatch(HideLoading());
@@ -75,10 +75,10 @@ const AdminCourses = () => {
   };
 
   return (
-    <div>
-      <div className="flex justify-end">
+    <div className="p-5">
+      <div className="flex justify-end mb-5">
         <button
-          className="bg-primary px-5 py-2 text-white"
+          className="bg-primary px-5 py-2 text-white rounded"
           onClick={() => {
             setSelectedItemForEdit(null);
             setShowAddEditModal(true);
@@ -87,75 +87,15 @@ const AdminCourses = () => {
           Add course
         </button>
       </div>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {courses.map((course) => (
           <div
             key={course._id}
-            className="shadow border p-5 border-gray-400 flex flex-col"
+            className="shadow border p-5 border-gray-400 flex flex-col justify-between"
           >
-            <h1 className="text-xl text-primary font-bold">
-              {course.title}
-            </h1>
-            <img src={course.image} alt="" className="h-62 w-80"/>
-            <h1>Description: {course.description}</h1>
-            <h1>Link: {course.link}</h1>
-            <div className="flex justify-end gap-5 mt-5">
-              <button
-                className="bg-primary text-white px-5 py-2 rounded-md"
-                onClick={() => openModal(course)}
-              >
-                Edit
-              </button>
-              <button
-                className="bg-red-500 text-white px-5 py-2 rounded-md"
-                onClick={() => onDelete(course)}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-      <Modal
-        visible={showAddEditModal}
-        title={selectedItemForEdit ? "Edit course" : "Add course"}
-        footer={null}
-        onCancel={() => setShowAddEditModal(false)}
-      >
-        <Form form={form} layout="vertical" onFinish={onFinish}>
-          <Form.Item name="title" label="Title">
-            <input placeholder="Title" />
-          </Form.Item>
-          <Form.Item name="description" label="Description">
-            <input placeholder="Description" />
-          </Form.Item>
-          <Form.Item name="image" label="Image URL">
-            <input placeholder="Image URL" />
-          </Form.Item>
-          <Form.Item name="link" label="link">
-            <input placeholder="Paste URL Link"/>
-          </Form.Item>
-          <Form.Item name="technologies" label="Technologies">
-            <input placeholder="Technologies"/>
-          </Form.Item>
-
-          <div className="flex justify-end">
-            <button
-              className="border-primary text-primary px-5 py-2 rounded-md"
-              onClick={() => {
-                setShowAddEditModal(false);
-              }}
-            >
-              Cancel
-            </button>
-            <button className="bg-primary text-white px-5 py-2 rounded-md" type="submit">
-              {selectedItemForEdit ? "Update" : "Add"}
-            </button>
-          </div>
-        </Form>
-      </Modal>
-    </div>
-  );
-};
-
-export default AdminCourses;
+            <div>
+              <h1 className="text-xl text-primary font-bold">
+                {course.title}
+              </h1>
+              <img src={course.image} alt="" className="h-62 w-full"/>
+             
