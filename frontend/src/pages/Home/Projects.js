@@ -1,6 +1,7 @@
 import React from "react";
 import SectionTitle from "../../components/SectionTitle";
 import { useSelector } from "react-redux";
+import Link from 'react-router-dom'
 
 const Project = () => {
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
@@ -50,6 +51,7 @@ const Project = () => {
               <p className="text-white">
                 {project[selectedItemIndex].description}
               </p>
+                <button Link={link} className="bg-teritary text-white py-5 px-3">View</button>
             </div>
           </div>
         )}
