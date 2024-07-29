@@ -91,15 +91,17 @@ const AdminProjects = () => {
         {projects.map((project) => (
           <div
             key={project._id}
-            className="shadow border p-5 border-gray-400 flex flex-col"
+            className="shadow border p-5 border-gray-400 flex flex-col justify-between"
           >
-            <h1 className="text-xl text-primary font-bold">
-              {project.title}
-            </h1>
-            <img src={project.image} alt="" className="h-62 w-full"/>
-            <h1>Technologies: {project.technologies}</h1>
-            <h1>Description: {project.description}</h1>
-            <h1>Link: {project.link}</h1>
+            <div>
+              <h1 className="text-xl text-primary font-bold">
+                {project.title}
+              </h1>
+              <img src={project.image} alt="" className="h-62 w-full"/>
+              <h1>Technologies: {project.technologies}</h1>
+              <h1>Description: {project.description}</h1>
+              <h1>Link: {project.link}</h1>
+            </div>
             <div className="flex justify-end gap-5 mt-5">
               <button
                 className="bg-primary text-white px-5 py-2 rounded-md"
