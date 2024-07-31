@@ -1,12 +1,12 @@
 import React from "react";
 import SectionTitle from "../../components/SectionTitle";
 import { useSelector } from "react-redux";
-import Link from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Project = () => {
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
   const { portfolioData } = useSelector((state) => state.root);
-  const {project}= portfolioData;
+  const { project } = portfolioData;
 
   return (
     <div>
@@ -14,27 +14,26 @@ const Project = () => {
 
       <div className="flex py-10 gap-20 sm:flex-col">
         <div className="flex flex-col gap-10 border-l-2 border-[#135e4c82] w-1/3 sm:flex-row sm:overflow-x-scroll sm:w-full">
-          { project && project.map((project, index) => (
-              <div
-                key={index}
-                onClick={() => {
-                  setSelectedItemIndex(index);
-                }}
-                className="cursor-pointer"
-              >
-                <h1
-                  className={`text-xl px-5
+          {project && project.map((project, index) => (
+            <div
+              key={index}
+              onClick={() => {
+                setSelectedItemIndex(index);
+              }}
+              className="cursor-pointer"
+            >
+              <h1
+                className={`text-xl px-5
                   ${
                     selectedItemIndex === index
                       ? "text-tertiary border-tertiary border-l-4 -ml-[3px] bg-[#1a7f5a31] py-3"
                       : "text-white"
                   }`}
-                >
-                  {project.title}
-                </h1>
-              </div>
-            ))}
-        
+              >
+                {project.title}
+              </h1>
+            </div>
+          ))}
         </div>
 
         {project && (
@@ -51,7 +50,9 @@ const Project = () => {
               <p className="text-white">
                 {project[selectedItemIndex].description}
               </p>
-                <button Link={link} className="bg-teritary text-white py-5 px-3">View</button>
+              <Link to={project[selectedItemIndex].link}>
+                <button className="bg-teritary text-white py-5 px-3">View</button>
+              </Link>
             </div>
           </div>
         )}
