@@ -37,11 +37,13 @@ const Project = () => {
 
         {project && (
           <div className="flex items-center justify-center gap-10 flex-col md:flex-row">
+          <Link to={project[selectedItemIndex].link}>
             <img
               src={project[selectedItemIndex].image}
               alt={project[selectedItemIndex].title}
               className="h-60 w-72"
             />
+          </Link> 
             <div className="flex flex-col gap-5">
               <h1 className="text-secondary text-2xl font-semibold">
                 {project[selectedItemIndex].title}
@@ -49,9 +51,6 @@ const Project = () => {
               <p className="text-white">
                 {project[selectedItemIndex].description}
               </p>
-              <Link to={project[selectedItemIndex].link}>
-                <button className="bg-tertiary text-white py-2 px-4">View</button>
-              </Link>
             </div>
           </div>
         )}
