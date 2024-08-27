@@ -10,7 +10,7 @@ const Intro = () => {
   return (
     <div className="h-[80vh] bg-primary flex flex-col items-start justify-center gap-8">
       <h1 className="text-white">{welcomeText || ''}</h1>
-      <h1 className="text-7xl sm:text-3xl text-secondary">{firstName || ''} {lastName || ''}</h1>
+      <h2 className="text-7xl sm:text-3xl text-secondary">{firstName || ''} {lastName || ''}</h2>
       <h3 className="text-6xl sm:text-3xl text-white font-semibold">
         {caption || ''}
       </h3>
